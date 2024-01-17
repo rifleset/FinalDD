@@ -1,0 +1,21 @@
+
+7
+java:S1220""Move this file to a named package.8á¢ÅÏ1
+c
+java:S1659"ADeclare "rear" and all following declarations on a separate line.(‹ÏÁ•ùÿÿÿÿ8ò¢ÅÏ1
+^
+java:S3078$"AUse an "AtomicInteger" for this field; its operations are atomic.(ÂÓ×À8õ¢ÅÏ1
+^
+java:S30781"AUse an "AtomicInteger" for this field; its operations are atomic.(ÂÓ×À8ö¢ÅÏ1
+^
+java:S3078@"AUse an "AtomicInteger" for this field; its operations are atomic.(ÂÓ×À8ø¢ÅÏ1
+^
+java:S3078P"AUse an "AtomicInteger" for this field; its operations are atomic.(ÂÓ×À8ù¢ÅÏ1
+^
+java:S3078y"AUse an "AtomicInteger" for this field; its operations are atomic.(ÂÓ×À8ü¢ÅÏ1
+_
+java:S3078¦"AUse an "AtomicInteger" for this field; its operations are atomic.(ÂÓ×À8ÿ¢ÅÏ1
+]
+java:S1161¾":Add the "@Override" annotation above this method signature(¦³üëûÿÿÿÿ8£ÅÏ1
+]
+java:S1161å":Add the "@Override" annotation above this method signature(¦³üëûÿÿÿÿ8‰£ÅÏ1
