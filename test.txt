@@ -15,6 +15,10 @@ The order of elements remains consistent and logical even after wraparound. For 
 The wrapping logic does not lead to overwritten elements or gaps in the occupied slots of the underlying array.
 In summary, DequeCapacityAndWrappingTests.java is responsible for ensuring that the CircularArrayDeQueue correctly manages its capacity and maintains its integrity and order of elements, especially in scenarios involving reaching capacity limits and the wraparound behavior of the internal array. This ensures that the deque is robust, reliable, and performs as expected even as it grows or wraps around during usage.
 
+
+
+
+
 DequeConcurrentModificationTests.java is a test class specifically designed to verify the behavior of CircularArrayDeQueue in the face of concurrent modifications. Concurrent modifications refer to the scenario where a collection (in this case, the deque) is modified while it is being iterated over. This is a crucial aspect to test because such modifications can lead to unpredictable behavior or inconsistent states if not handled properly.
 
 Here's what DequeConcurrentModificationTests.java generally aims to cover:
@@ -41,6 +45,11 @@ Exception Handling:
 The tests should assert that a ConcurrentModificationException is thrown whenever the deque is modified during iteration. This ensures that the modification count (modCount) is being correctly incremented during structural changes to the deque and that the iterators are checking this count.
 In essence, DequeConcurrentModificationTests.java ensures the integrity and fail-fast behavior of CircularArrayDeQueue iterators. This is important because it helps prevent bugs and inconsistencies that can arise when a collection is unexpectedly modified while it's being iterated over. The presence of these tests contributes to the robustness and reliability of the deque implementation.
 
+
+
+
+
+
 DequeEmptyStateTests.java is a test class dedicated to verifying the behavior of the CircularArrayDeQueue when it's in an empty state. Handling an empty state correctly is crucial because operations on an empty collection are common sources of errors, such as NoSuchElementException. This class ensures that the CircularArrayDeQueue behaves as expected when no elements are present.
 
 Here's what DequeEmptyStateTests.java generally aims to cover:
@@ -61,6 +70,14 @@ Empty State After Clearing:
 
 Optionally, the tests can also ensure that after calling the clear() method on a deque (whether it was already empty or not), the deque is indeed empty. This can be validated by checking that isEmpty() returns true, and operations like popFirst, popLast, first, and last throw NoSuchElementException.
 In summary, DequeEmptyStateTests.java ensures that the CircularArrayDeQueue gracefully handles operations when it's empty, throwing appropriate exceptions and maintaining internal consistency. This is a critical aspect of ensuring that the deque is robust and behaves predictably in edge cases, enhancing the overall reliability of the data structure.
+
+
+
+
+
+
+
+
 
 DequeIteratorBehaviorTests.java is designed to verify the correct behavior and integrity of the iterators provided by the CircularArrayDeQueue. Specifically, it tests the standard iterator (iterator()) and the reverse iterator (descendingIterator()), ensuring they correctly traverse the deque and respect its structure, especially in various states (e.g., empty, single element, multiple elements).
 
