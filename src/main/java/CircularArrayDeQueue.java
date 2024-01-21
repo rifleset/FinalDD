@@ -3,7 +3,8 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class CircularArrayDeQueue<E> implements DeQueue<E> {
+public class CircularArrayDeQueue<E> implements DeQueue<E>, Iterable<E> {
+
     // Default initial capacity for the deque.
     private static final int DEFAULT_CAPACITY = 8;
     // Array used to store the elements of the deque.
@@ -22,6 +23,7 @@ public class CircularArrayDeQueue<E> implements DeQueue<E> {
         // Reset modification count.
         modCount = 0;
     }
+
 
     @Override
     public void pushFirst(E elem) {
@@ -189,14 +191,18 @@ public class CircularArrayDeQueue<E> implements DeQueue<E> {
 
         public void remove() {
             if (lastRet < 0) throw new IllegalStateException();
-            // Check for any modifications made to the deque after the iterator was created.
             checkForComodification();
-            // Remove the element at the lastRet index.
-            CircularArrayDeQueue.this.removeAt(lastRet);
-            if (lastRet < current) current--;
+            if (lastRet == front) {  // Ensure that we're removing the first element
+                CircularArrayDeQueue.this.popFirst();
+                current = front;
+            } else {
+                throw new UnsupportedOperationException("Can remove only first element during forward iteration.");
+            }
             lastRet = -1;
             expectedModCount = modCount;
         }
+
+
 
         final void checkForComodification() {
             // Check if the deque has been structurally modified since the iterator was created.
@@ -228,13 +234,21 @@ public class CircularArrayDeQueue<E> implements DeQueue<E> {
 
         public void remove() {
             if (lastRet < 0) throw new IllegalStateException();
-            // Check for any modifications made to the deque after the iterator was created.
             checkForComodification();
-            // Remove the element at the lastRet index.
-            CircularArrayDeQueue.this.removeAt(lastRet);
+            int lastElementIndex = (rear - 1 + array.length) % array.length;
+            if (lastRet == lastElementIndex) {  // Ensure that we're removing the last element
+                CircularArrayDeQueue.this.popLast();
+                current = (rear - 1 + array.length) % array.length;
+            } else {
+                throw new UnsupportedOperationException("Can remove only last element during backward iteration.");
+            }
             lastRet = -1;
             expectedModCount = modCount;
         }
+
+
+
+
 
         final void checkForComodification() {
             // Check if the deque has been structurally modified since the iterator was created.
